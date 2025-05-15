@@ -5,10 +5,9 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      # ./hardware-configuration.nix
-    ];
+  imports = [ # Include the results of the hardware scan.
+    # ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.grub.enable = true;
@@ -18,8 +17,7 @@
   # networking.hostName = "nixos-vm1"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  networking.extraHosts =
-  ''
+  networking.extraHosts = ''
     192.168.68.124 frodo
   '';
 
@@ -92,10 +90,11 @@
     isNormalUser = true;
     description = "Amaury Pupo Merino";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      kdePackages.kate
-    #  thunderbird
-    ];
+    packages = with pkgs;
+      [
+        kdePackages.kate
+        #  thunderbird
+      ];
   };
 
   # Install firefox.
@@ -107,15 +106,15 @@
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-   programs.gnupg.agent = {
-     enable = true;
-     enableSSHSupport = true;
-   };
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
 
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-   services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -131,13 +130,13 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   # system.stateVersion = "24.11"; # Did you read the comment?
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
-  
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   # Include automatic garbage collection.
   nix.settings.auto-optimise-store = true;
   nix.gc.automatic = true;
   nix.gc.options = "--delete-older-than 60d";
-  
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -151,6 +150,7 @@
     starship
     neofetch
     atool
+    python314
   ];
 
 }
