@@ -139,20 +139,23 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    atool
-    bat
-    eza
-    fish
-    git
-    helix
-    neofetch
-    python314
-    R
-    rPackages.tidyverse
-    starship
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-  ];
+  environment.systemPackages = with pkgs;
+    let
+      R-with-my-packages =
+        rWrapper.override { packages = with rPackages; [ tidyverse ]; };
+    in [
+      atool
+      bat
+      eza
+      fish
+      git
+      helix
+      neofetch
+      python314
+      R-with-my-packages
+      starship
+      vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+      wget
+    ];
 
 }
