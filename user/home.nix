@@ -76,7 +76,7 @@
   programs.fish = {
       enable = true;
       shellAliases = {};
-      loginShellInit = "starship init fish | source";
+      interactiveShellInit = "starship init fish | source";
     };
 
   programs.git = {
