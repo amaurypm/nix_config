@@ -142,7 +142,7 @@
   environment.systemPackages = with pkgs;
     let
       R-with-my-packages =
-        rWrapper.override { packages = with rPackages; [ tidyverse ]; };
+        rWrapper.override { packages = with rPackages; [ tidyverse ggpubr ]; };
     in [
       atool
       bat
