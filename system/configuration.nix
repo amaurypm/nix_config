@@ -151,6 +151,7 @@
     neofetch
     atool
     python314
+    R
   ];
 
 }
