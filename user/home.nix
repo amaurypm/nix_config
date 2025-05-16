@@ -74,19 +74,19 @@
 
   # Enable programs.
   programs.fish = {
-      enable = true;
-      shellAliases = {};
-      interactiveShellInit = "starship init fish | source";
-    };
+    enable = true;
+    shellAliases = { };
+    interactiveShellInit = "starship init fish | source";
+  };
 
   programs.git = {
     enable = true;
-    userName  = "Amaury Pupo Merino";
+    userName = "Amaury Pupo Merino";
     userEmail = "amaury.pupo@gmail.com";
     extraConfig = {
-          user.signingKey = "90328DD1C00226144596310BC10C57589B857A51";
-          commit.gpgSign = true;
-        };
+      user.signingKey = "90328DD1C00226144596310BC10C57589B857A51";
+      commit.gpgSign = true;
+    };
   };
 
   programs.helix = {
@@ -111,7 +111,7 @@
       };
     };
   };
- 
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
