@@ -143,8 +143,9 @@
 
   # R and its packages definition.
     let
-      R-with-my-packages =
-        rWrapper.override { packages = with rPackages; [ tidyverse ggpubr ]; };
+      R-with-my-packages = rWrapper.override {
+        packages = with rPackages; [ tidyverse ggpubr IRkernel ];
+      };
     in [
 
       # Python and its packages
