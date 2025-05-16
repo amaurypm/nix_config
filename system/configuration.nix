@@ -140,10 +140,17 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs;
+
+  # R and its packages definition.
     let
       R-with-my-packages =
         rWrapper.override { packages = with rPackages; [ tidyverse ggpubr ]; };
     in [
+
+      # Python and its packages
+      (python312.withPackages (ps: with ps; [ numpy scipy jupyterlab ]))
+
+      # Other packages
       atool
       bat
       eza
@@ -151,10 +158,9 @@
       git
       helix
       neofetch
-      python314
-      R-with-my-packages
+      R-with-my-packages # Actually installing R and its packages.
       starship
-      vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+      vim
       wget
     ];
 
